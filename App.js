@@ -3,17 +3,25 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import Login from './src/screen/Login';
 
+import HomeAdmin from './src/screen/Admin/Home';
+
+import Barang from './src/screen/Admin/Barang';
 import TambahBarang from './src/screen/Admin/Barang/TambahBarang';
 import UpdateBarang from './src/screen/Admin/Barang/UpdateBarang';
-import HomeAdmin from './src/screen/Admin/Home';
-import Barang from './src/screen/Admin/Barang';
 import DetailBarang from './src/screen/Admin/Barang/DetailBarang';
+
 import Pengiriman from './src/screen/Admin/Pengiriman';
 import DetailPengiriman from './src/screen/Admin/Pengiriman/DetailPengiriman';
 import TambahPengiriman from './src/screen/Admin/Pengiriman/TambahPengiriman';
 import UpdatePengiriman from './src/screen/Admin/Pengiriman/UpdatePengiriman';
 
+import User from './src/screen/Admin/User';
+import DetailUser from './src/screen/Admin/User/DetailUser';
+import TambahUser from './src/screen/Admin/User/TambahUser';
+import UpdateUser from './src/screen/Admin/User/UpdateUser';
+
 import HomeKurir from './src/screen/Kurir/Home';
+
 import KurirPengiriman from './src/screen/Kurir/Pengiriman';
 import KurirDetailPengiriman from './src/screen/Kurir/Pengiriman/DetailPengiriman';
 import Maps from './src/screen/Kurir/Maps';
@@ -45,10 +53,17 @@ const App = () => {
 
           {/* Admin */}
           <Stack.Screen name="HomeAdmin" component={HomeAdmin} />
+
+          <Stack.Screen name="User" component={User} />
+          <Stack.Screen name="DetailUser" component={DetailUser} />
+          <Stack.Screen name="TambahUser" component={TambahUser} />
+          <Stack.Screen name="UpdateUser" component={UpdateUser} />
+
           <Stack.Screen name="Pengiriman" component={Pengiriman} />
           <Stack.Screen name="TambahPengiriman" component={TambahPengiriman} />
           <Stack.Screen name="UpdatePengiriman" component={UpdatePengiriman} />
           <Stack.Screen name="DetailPengiriman" component={DetailPengiriman} />
+
           <Stack.Screen name="Barang" component={Barang} />
           <Stack.Screen name="TambahBarang" component={TambahBarang} />
           <Stack.Screen name="UpdateBarang" component={UpdateBarang} />

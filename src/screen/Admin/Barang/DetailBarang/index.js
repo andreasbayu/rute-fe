@@ -8,6 +8,7 @@ const DetailBarang = ({navigation, route}) => {
   };
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Detail Barang {data.kode}</Text>
       <View style={styles.card}>
         <Text style={styles.label}>ID:</Text>
         <Text style={styles.value}>{data.id}</Text>
@@ -39,26 +40,35 @@ const DetailBarang = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 16,
+    marginHorizontal: 8,
   },
   card: {
-    width: '90%',
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 4,
     shadowColor: 'black',
+    elevation: 3,
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
-    padding: 24,
+    padding: 12,
+  },
+  title: {
+    padding: 14,
+    fontSize: 16,
+    backgroundColor: '#505C62',
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
+    textAlign: 'center',
+    color: 'white',
   },
   label: {
     fontWeight: 'bold',
+    fontSize: 15,
     marginBottom: 5,
   },
   value: {
-    marginBottom: 20,
+    marginBottom: 16,
   },
 });
 

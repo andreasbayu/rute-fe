@@ -35,6 +35,13 @@ const Home = ({navigation}) => {
       <View style={styles.cardContainer}>
         <TouchableOpacity
           activeOpacity={0.7}
+          onPress={() => handleCardPress('User')}
+          style={styles.card}>
+          <Icon name="user" type="feather" />
+          <Text style={styles.cardText}>User</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.7}
           onPress={() => handleExitButton()}
           style={styles.card}>
           <Icon name="log-out" type="feather" />
