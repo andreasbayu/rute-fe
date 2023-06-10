@@ -114,8 +114,11 @@ const User = ({navigation}) => {
                 }}>
                 <View style={styles.card}>
                   <Text>{item.username}</Text>
-                  <Text style={styles.namaText}>{item.nama}</Text>
-                  <Text style={styles.roleText}>{item.role}</Text>
+                  <Text style={styles.namaText}>
+                    {item.name === null ? '-' : item.name}
+                  </Text>
+                  <Text style={styles.contentText}>{item.email}</Text>
+                  <Text style={styles.contentText}>{item.role}</Text>
                 </View>
               </TouchableOpacity>
               <View style={styles.buttonContainer}>
@@ -170,18 +173,23 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 5,
     shadowColor: 'black',
-    padding: 20,
-    marginHorizontal: 10,
+    padding: 12,
+    marginHorizontal: 8,
   },
   loadingText: {
     marginTop: 40,
     textAlign: 'center',
   },
-  roleText: {
-    fontSize: 10,
+  contentText: {
+    fontSize: 14,
+    color: 'balck',
+    marginVertical: 2,
   },
   namaText: {
-    fontSize: 12,
+    fontSize: 16,
+    color: 'black',
+    fontWeight: '600',
+    marginVertical: 2,
   },
   buttonStyle: {
     margin: 10,
@@ -197,7 +205,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#6C00FF',
+    backgroundColor: '#15cf53',
   },
   buttonAddTextStyle: {
     textAlign: 'center',

@@ -39,7 +39,7 @@ const Login = ({navigation}) => {
           });
 
         return Alert.alert(
-          'Login Berhasil',
+          'Login Berhasil,',
           'Selamat Datang ' + resBody.user.username,
           [
             {

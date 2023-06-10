@@ -9,6 +9,7 @@ const User = ({navigation, route}) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Detail User {data.username}</Text>
       <View style={styles.card}>
         <Text style={styles.label}>ID:</Text>
         <Text style={styles.value}>{data.id}</Text>
@@ -17,7 +18,7 @@ const User = ({navigation, route}) => {
         <Text style={styles.label}>Username:</Text>
         <Text style={styles.value}>{data.username}</Text>
         <Text style={styles.label}>Password:</Text>
-        <Text style={styles.value}>{data.password}</Text>
+        <Text style={styles.value}>{'*****'}</Text>
         <Text style={styles.label}>Name:</Text>
         <Text style={styles.value}>{data.name}</Text>
         <Text style={styles.label}>Role:</Text>
@@ -38,24 +39,35 @@ const User = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 16,
+    marginHorizontal: 8,
   },
   card: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
+    backgroundColor: 'white',
+    borderRadius: 4,
+    shadowColor: 'black',
+    elevation: 3,
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    padding: 12,
+  },
+  title: {
+    padding: 14,
+    fontSize: 16,
+    backgroundColor: '#505C62',
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
+    textAlign: 'center',
+    color: 'white',
   },
   label: {
-    fontSize: 16,
     fontWeight: 'bold',
+    fontSize: 15,
     marginBottom: 5,
   },
   value: {
-    fontSize: 16,
-    marginBottom: 10,
+    marginBottom: 16,
   },
 });
 

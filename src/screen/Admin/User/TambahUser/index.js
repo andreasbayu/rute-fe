@@ -4,44 +4,37 @@ import {Input, Button} from '@rneui/themed';
 import request from '../../../../api/request';
 
 const TambahUser = ({navigation, route}) => {
-  const [kode, setKode] = useState('');
-  const [namaPenerima, setNamaPenerima] = useState('');
-  const [alamat, setAlamat] = useState('');
-  const [longitude, setLongitude] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [pengirimanId, setPengirimanId] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
-    if (
-      kode === '' ||
-      namaPenerima === '' ||
-      alamat === '' ||
-      longitude === '' ||
-      latitude === ''
-    ) {
+    if (username === '' || password === '' || name === '' || role === '') {
       Alert.alert('Error', 'All fields are required!');
       return;
     }
     try {
       setIsLoading(true);
+
+      // Create the user object
       const user = {
-        kode: kode,
-        namaPenerima: namaPenerima,
-        alamat: alamat,
-        koordinat: {
-          longitude: longitude,
-          latitude: latitude,
-        },
-        pengirimanId: pengirimanId === '' ? null : pengirimanId,
+        username: username,
+        password: password,
+        name: name,
+        role: role,
+        email: email,
       };
 
+      // Perform your request here
       if (route?.params) {
         user.userId = route?.params;
       }
 
       const req = await request({
-        path: '/users',
+        path: '/auth/register',
         method: 'POST',
         body: user,
       });
@@ -54,7 +47,7 @@ const TambahUser = ({navigation, route}) => {
         ]);
       }
       return Alert.alert('Errpr', 'Terjadi kesalahan', [
-        {text: 'OK', onPress: () => console.log('OK')},
+        {text: 'OK', onPress: () => console.log(req)},
       ]);
     } catch (error) {
       console.error(error);
@@ -64,31 +57,27 @@ const TambahUser = ({navigation, route}) => {
 
   return (
     <View>
-      <Input placeholder="Kode" value={kode} onChangeText={setKode} />
       <Input
-        placeholder="Nama Penerima"
-        value={namaPenerima}
-        onChangeText={setNamaPenerima}
-      />
-      <Input placeholder="Alamat" value={alamat} onChangeText={setAlamat} />
-      <Input
-        placeholder="Longitude"
-        value={longitude}
-        onChangeText={setLongitude}
+        placeholder="Username"
+        value={username}
+        onChangeText={setUsername}
       />
       <Input
-        placeholder="Latitude"
-        value={latitude}
-        onChangeText={setLatitude}
+        placeholder="Email"
+        keyboardType="email-address"
+        value={email}
+        onChangeText={setEmail}
       />
       <Input
-        placeholder="ID Pengiriman"
-        value={pengirimanId}
-        onChangeText={setPengirimanId}
-        editable={!route?.params}
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
       />
+      <Input placeholder="Name" value={name} onChangeText={setName} />
+      <Input placeholder="Role" value={role} onChangeText={setRole} />
       <Button
-        title="Kirim"
+        title="Submit"
         style={styles.buttonStyle}
         loading={isLoading}
         disabled={isLoading}

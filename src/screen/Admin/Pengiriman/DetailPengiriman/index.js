@@ -129,7 +129,7 @@ export default DetailPengiriman;
 const styles = StyleSheet.create({
   kurirContainer: {
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 4,
     shadowColor: 'black',
     shadowOffset: {
       width: 0,
@@ -147,15 +147,15 @@ const styles = StyleSheet.create({
   },
   content: {
     backgroundColor: 'white',
-    padding: 16,
-    borderRadius: 12,
+    padding: 8,
+    borderRadius: 4,
   },
   itemContainer: {
     backgroundColor: 'white',
     borderRadius: 10,
     shadowColor: 'black',
     elevation: 1,
-    padding: 18,
+    padding: 12,
     marginBottom: 2,
     marginTop: 8,
   },
@@ -163,28 +163,42 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   container: {
-    padding: 16,
+    padding: 8,
     marginBottom: 60,
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 22,
+    textAlign: 'center',
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 12,
+    backgroundColor: '#505C62',
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 3,
+    color: 'white',
+    paddingVertical: 9,
   },
   sectionContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
     marginTop: 8,
   },
   sectionContainerCol: {
     marginTop: 8,
+    flex: 1,
+    flexGrow: 1,
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    marginBottom: 4,
+  },
+  itemColumn: {
+    width: '100%',
+    marginVertical: 2,
   },
   labelText: {
     backgroundColor: '#2089dc',
     color: 'white',
-    textAlign: 'center',
-    paddingVertical: 5,
-    marginBottom: 10,
+    padding: 10,
+    fontSize: 16,
+    fontWeight: '400',
+    borderRadius: 2,
   },
   valueText: {
     fontSize: 16,

@@ -5,10 +5,10 @@ import Login from './src/screen/Login';
 
 import HomeAdmin from './src/screen/Admin/Home';
 
-import Barang from './src/screen/Admin/Barang';
-import TambahBarang from './src/screen/Admin/Barang/TambahBarang';
-import UpdateBarang from './src/screen/Admin/Barang/UpdateBarang';
-import DetailBarang from './src/screen/Admin/Barang/DetailBarang';
+import Barang from './src/screen/Global/Barang';
+import TambahBarang from './src/screen/Global/Barang/TambahBarang';
+import UpdateBarang from './src/screen/Global/Barang/UpdateBarang';
+import DetailBarang from './src/screen/Global/Barang/DetailBarang';
 
 import Pengiriman from './src/screen/Admin/Pengiriman';
 import DetailPengiriman from './src/screen/Admin/Pengiriman/DetailPengiriman';
@@ -25,6 +25,8 @@ import HomeKurir from './src/screen/Kurir/Home';
 import KurirPengiriman from './src/screen/Kurir/Pengiriman';
 import KurirDetailPengiriman from './src/screen/Kurir/Pengiriman/DetailPengiriman';
 import Maps from './src/screen/Kurir/Maps';
+
+import MapsLocation from './src/screen/Global/MapsLocation';
 
 const Stack = createStackNavigator();
 
@@ -50,6 +52,9 @@ const App = () => {
             name="KurirDetailPengiriman"
             component={KurirDetailPengiriman}
           />
+
+          {/* Global */}
+          <Stack.Screen name="MapsLocation" component={MapsLocation} />
 
           {/* Admin */}
           <Stack.Screen name="HomeAdmin" component={HomeAdmin} />

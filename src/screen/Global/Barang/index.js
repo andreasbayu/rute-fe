@@ -90,69 +90,72 @@ const Barang = ({navigation}) => {
 
   return (
     <>
-      <View style={styles.buttonAddContainerStyle}>
-        <TouchableOpacity
-          style={styles.buttonAddStyle}
-          onPress={handleAddButton}>
-          <Icon
-            size={26}
-            style={styles.buttonAddTextStyle}
-            name="plus"
-            type="feather"
-          />
-        </TouchableOpacity>
-      </View>
       {isDataReady ? (
-        <FlatList
-          data={data}
-          renderItem={({item}) => (
-            <>
-              <TouchableOpacity
-                containerStyle={styles.container}
-                onPress={() => {
-                  handleClickedItem(item);
-                }}>
-                <View style={styles.card}>
-                  <Text>{item.kode}</Text>
-                  <Text style={styles.namaText}>{item.namaPenerima}</Text>
-                  <Text style={styles.alamatText}>{item.alamat}</Text>
+        <>
+          <FlatList
+            data={data}
+            renderItem={({item}) => (
+              <>
+                <TouchableOpacity
+                  containerStyle={styles.container}
+                  onPress={() => {
+                    handleClickedItem(item);
+                  }}>
+                  <View style={styles.card}>
+                    <Text>{item.kode}</Text>
+                    <Text style={styles.namaText}>{item.namaPenerima}</Text>
+                    <Text style={styles.alamatText}>{item.alamat}</Text>
+                  </View>
+                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                  <Button
+                    title="Edit"
+                    icon={{
+                      name: 'edit',
+                      type: 'feather',
+                      color: 'white',
+                      size: 18,
+                    }}
+                    containerStyle={styles.buttonContainerStyle}
+                    onPress={() => {
+                      handleClickedUpdate(item);
+                    }}
+                  />
+                  <Button
+                    loading={itemId === item.id ? isLoading : false}
+                    disabled={itemId === item.id ? isLoading : false}
+                    title="Hapus"
+                    color="error"
+                    icon={{
+                      name: 'trash',
+                      type: 'feather',
+                      color: 'white',
+                      size: 18,
+                    }}
+                    containerStyle={styles.buttonContainerStyle}
+                    onPress={() => {
+                      handleDeleteButton(item.id);
+                    }}
+                  />
                 </View>
-              </TouchableOpacity>
-              <View style={styles.buttonContainer}>
-                <Button
-                  title="Update"
-                  icon={{
-                    name: 'edit',
-                    type: 'feather',
-                    color: 'white',
-                    size: 18,
-                  }}
-                  containerStyle={styles.buttonContainerStyle}
-                  onPress={() => {
-                    handleClickedUpdate(item);
-                  }}
-                />
-                <Button
-                  loading={itemId === item.id ? isLoading : false}
-                  disabled={itemId === item.id ? isLoading : false}
-                  title="Hapus"
-                  color="error"
-                  icon={{
-                    name: 'trash',
-                    type: 'feather',
-                    color: 'white',
-                    size: 18,
-                  }}
-                  containerStyle={styles.buttonContainerStyle}
-                  onPress={() => {
-                    handleDeleteButton(item.id);
-                  }}
-                />
-              </View>
-            </>
-          )}
-          keyExtractor={item => item.id}
-        />
+              </>
+            )}
+            keyExtractor={item => item.id}
+          />
+          <View style={styles.buttonAddContainerStyle}>
+            <TouchableOpacity
+              style={styles.buttonAddStyle}
+              onPress={handleAddButton}>
+              <Icon
+                size={26}
+                style={styles.buttonAddTextStyle}
+                name="plus"
+                type="feather"
+                color="white"
+              />
+            </TouchableOpacity>
+          </View>
+        </>
       ) : (
         <Text style={styles.loadingText}>Loading Fetching Data...</Text>
       )}
@@ -170,18 +173,23 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 5,
     shadowColor: 'black',
-    padding: 20,
-    marginHorizontal: 10,
+    padding: 12,
+    marginHorizontal: 8,
   },
   loadingText: {
     marginTop: 40,
     textAlign: 'center',
   },
   alamatText: {
-    fontSize: 10,
+    fontSize: 14,
+    color: 'balck',
+    marginVertical: 2,
   },
   namaText: {
-    fontSize: 12,
+    fontSize: 16,
+    color: 'black',
+    fontWeight: '600',
+    marginVertical: 2,
   },
   buttonStyle: {
     margin: 10,
@@ -197,7 +205,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#6C00FF',
+    backgroundColor: '#15cf53',
   },
   buttonAddTextStyle: {
     textAlign: 'center',

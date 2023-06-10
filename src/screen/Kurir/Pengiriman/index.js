@@ -73,16 +73,15 @@ export default KurirPengiriman;
 const styles = StyleSheet.create({
   card: {
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 6,
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
     padding: 18,
     marginBottom: 2,
     marginTop: 8,
-    marginHorizontal: 10,
+    marginHorizontal: 8,
   },
   loadingText: {
     marginTop: 40,
