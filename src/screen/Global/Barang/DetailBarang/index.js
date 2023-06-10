@@ -1,10 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const DetailBarang = ({navigation, route}) => {
   const data = route?.params;
   const date = d => {
     return new Date(d);
+  };
+
+  const handleClickedMap = data => {
+    navigation.navigate({
+      name: 'MapsLocation',
+      params: data,
+    });
   };
   return (
     <View style={styles.container}>
@@ -33,6 +41,13 @@ const DetailBarang = ({navigation, route}) => {
           {date(data.updatedAt).toLocaleString('id-ID')}
         </Text>
       </View>
+      <TouchableOpacity
+        style={styles.showMap}
+        onPress={() => {
+          handleClickedMap(data);
+        }}>
+        <Text style={styles.showMapText}>Tampilkan Map</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -69,6 +84,18 @@ const styles = StyleSheet.create({
   },
   value: {
     marginBottom: 16,
+  },
+  showMap: {
+    backgroundColor: '#36a339',
+    padding: 16,
+    borderRadius: 8,
+    marginTop: 5,
+  },
+  showMapText: {
+    color: 'white',
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: '600',
   },
 });
 
