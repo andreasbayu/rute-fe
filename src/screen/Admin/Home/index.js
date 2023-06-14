@@ -1,3 +1,4 @@
+import {CommonActions} from '@react-navigation/native';
 import {Icon} from '@rneui/themed';
 import React from 'react';
 import {View, Text, StyleSheet, BackHandler} from 'react-native';
@@ -10,7 +11,12 @@ const Home = ({navigation}) => {
   };
 
   const handleExitButton = () => {
-    BackHandler.exitApp();
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 1,
+        routes: [{name: 'Login'}],
+      }),
+    );
   };
   return (
     <ScrollView style={styles.container}>

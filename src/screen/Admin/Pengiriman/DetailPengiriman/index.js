@@ -1,20 +1,36 @@
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import request from '../../../../api/request';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Chip} from '@rneui/themed';
 
-const BarangList = ({res}) => (
-  <View>
-    {res.map(item => (
-      <View key={item.id} style={styles.itemContainer}>
-        <Text style={styles.itemText}>Kode: {item.kode}</Text>
-        <Text style={styles.itemText}>Nama Penerima: {item.namaPenerima}</Text>
-        <Text style={styles.itemText}>Alamat: {item.alamat}</Text>
-      </View>
-    ))}
-  </View>
-);
+const BarangList = ({navigation, route}) => {
+  const handleClickedItem = parsingData => {
+    navigation.navigate({
+      name: 'DetailBarang',
+      params: parsingData,
+    });
+  };
+
+  return (
+    <View>
+      {route.map(item => (
+        <TouchableOpacity
+          key={item.id}
+          style={styles.itemContainer}
+          onPress={() => {
+            handleClickedItem(item);
+          }}>
+          <Text style={styles.itemText}>Kode: {item.kode}</Text>
+          <Text style={styles.itemText}>
+            Nama Penerima: {item.namaPenerima}
+          </Text>
+          <Text style={styles.itemText}>Alamat: {item.alamat}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+};
 
 const DetailPengiriman = ({navigation, route}) => {
   const [data, setData] = useState([]);
