@@ -1,4 +1,4 @@
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {Alert, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import CustomInput from '../../components/CustomInput';
 import ButtonPrimary from '../../components/CustomButton';
@@ -8,6 +8,7 @@ import storage from '../../storage';
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const loginAction = async () => {
     try {
       console.log('exec');
@@ -70,32 +71,38 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <View style={styles.bgColor}>
-      {/* Title */}
-      <Text style={styles.title}>Login</Text>
+    <ScrollView>
+      <View style={styles.bgColor}>
+        {/* Title */}
+        <Text style={styles.title}>Login</Text>
 
-      {/* Image */}
+        {/* Image */}
+        <Image
+          style={styles.logo}
+          source={require('../../assets/images/login.png')}
+        />
 
-      {/* Form */}
-      <View style={styles.form}>
-        <View style={styles.formControl}>
-          <CustomInput
-            placeholder="Username"
-            onChangeText={text => setUsername(text)}
-          />
-        </View>
-        <View style={styles.formControl}>
-          <CustomInput
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={text => setPassword(text)}
-          />
-        </View>
-        <View style={(styles.formControl, {marginTop: 30})}>
-          <ButtonPrimary title="Login" onPress={loginAction} />
+        {/* Form */}
+        <View style={styles.form}>
+          <View style={styles.formControl}>
+            <CustomInput
+              placeholder="Username"
+              onChangeText={text => setUsername(text)}
+            />
+          </View>
+          <View style={styles.formControl}>
+            <CustomInput
+              placeholder="Password"
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)}
+            />
+          </View>
+          <View style={(styles.formControl, {marginTop: 20, marginBottom: 20})}>
+            <ButtonPrimary title="Login" onPress={loginAction} />
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -103,7 +110,7 @@ export default Login;
 
 const styles = StyleSheet.create({
   bgColor: {
-    backgroundColor: 'rgba(244, 157, 26, 0.04)',
+    backgroundColor: 'rgba(233, 245, 66, 0.06)',
     flex: 1,
   },
   title: {
@@ -111,9 +118,9 @@ const styles = StyleSheet.create({
     fontSize: 29,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    marginTop: 50,
-    marginBottom: 70,
-    color: '#F49D1A',
+    marginTop: 40,
+    marginBottom: 30,
+    color: '#780404',
   },
   form: {
     padding: 20,
@@ -121,5 +128,10 @@ const styles = StyleSheet.create({
   formControl: {
     marginVertical: 5,
     margin: 5,
+  },
+  logo: {
+    width: 250,
+    height: 250,
+    alignSelf: 'center',
   },
 });

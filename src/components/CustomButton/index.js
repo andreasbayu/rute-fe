@@ -13,13 +13,13 @@ export default ButtonPrimary;
 
 const styles = StyleSheet.create({
   buttonPrimary: {
-    backgroundColor: '#F49D1A',
+    backgroundColor: '#ec2d01',
     padding: 18,
-    borderRadius: 12,
+    borderRadius: 4,
   },
   textButton: {
     textAlign: 'center',
     color: '#FFFFFF',
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 });
