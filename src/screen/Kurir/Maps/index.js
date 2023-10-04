@@ -2,13 +2,18 @@ import React, {useEffect} from 'react';
 import {StyleSheet, View, Dimensions, Text} from 'react-native';
 import MapView, {Marker, Polyline} from 'react-native-maps';
 const Maps = ({navigation, route}) => {
+  const getStart = route.params?.barang[0];
+
   return (
     <View style={styles.container}>
       <MapView
         style={styles.maps}
+        showsUserLocation={true}
         initialRegion={{
-          latitude: -7.80553,
-          longitude: 110.35936,
+          // latitude: -7.80553,
+          // longitude: 110.35936,
+          latitude: Number.parseFloat(getStart.koordinat.latitude),
+          longitude: Number.parseFloat(getStart.koordinat.longitude),
           latitudeDelta: 0.021,
           longitudeDelta: 0.041,
         }}>
@@ -38,7 +43,7 @@ const Maps = ({navigation, route}) => {
           <Marker
             key={value.id}
             coordinate={{
-              latitude: Number.parseFloat(value.koordinat.latitude),
+              latitude: Number.parseFloat(value.kordinat.latitude),
               longitude: Number.parseFloat(value.koordinat.longitude),
             }}
             title={value.namaPenerima}
@@ -52,6 +57,9 @@ const Maps = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   maps: {
     width: Dimensions.get('screen').width,

@@ -8,9 +8,11 @@ import storage from '../../storage';
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setLoading] = useState(false);
 
   const loginAction = async () => {
     try {
+      setLoading(true);
       console.log('exec');
       const body = {
         username: username.toLowerCase(),
@@ -23,6 +25,8 @@ const Login = ({navigation}) => {
       });
 
       const resBody = await req.json();
+
+      setLoading(false);
 
       if (req.status === 201 || req.status === 200) {
         storage.save({
@@ -98,7 +102,12 @@ const Login = ({navigation}) => {
             />
           </View>
           <View style={(styles.formControl, {marginTop: 20, marginBottom: 20})}>
-            <ButtonPrimary title="Login" onPress={loginAction} />
+            <ButtonPrimary
+              title="Login"
+              onPress={loginAction}
+              loading={isLoading}
+              disabled={isLoading}
+            />
           </View>
         </View>
       </View>

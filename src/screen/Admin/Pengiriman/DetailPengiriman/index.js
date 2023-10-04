@@ -115,7 +115,7 @@ const DetailPengiriman = ({navigation, route}) => {
                 </View>
                 <View style={styles.sectionContainerCol}>
                   <Text style={styles.labelText}>Barang:</Text>
-                  <BarangList res={data.barang} />
+                  <BarangList route={data.barang} navigation={navigation} />
                 </View>
               </View>
             </View>
