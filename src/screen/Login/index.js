@@ -71,6 +71,10 @@ const Login = ({navigation}) => {
       ]);
     } catch (error) {
       console.error(error);
+      setLoading(false);
+      return Alert.alert('Login Gagal', 'Error, ' + error, [
+        {text: 'Ok', onPress: () => console.log('Ok')},
+      ]);
     }
   };
 
